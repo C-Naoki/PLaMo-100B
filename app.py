@@ -112,3 +112,11 @@ if show_history and st.session_state.conversation:
 
 elif show_history:
     st.info("まだ会話履歴がありません。チャットを開始してください。")
+
+st.markdown("---")
+st.markdown("""
+このウェブアプリに関する詳細は、以下の記事及びソースコードをご覧ください。
+
+- [PLaMo-100Bのβ版トライアルAPIを用いてデモ用アプリを作ってみた](https://zenn.dev/naoki0103/articles/plamo100b-demo)
+- [ソースコード](https://github.com/C-Naoki/PLaMo-100B)
+""")
