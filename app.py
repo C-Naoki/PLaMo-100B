@@ -27,9 +27,9 @@ st.title("PLaMo-100B Chat Demo")
 system_message = st.text_area("Please enter a system message:", "You are a professional translator of Japanese and English.")
 
 # User input
-user_input = st.text_area("Please enter a message to PLaMo-100B:", "Please translate the following English sentence into Japanese: 'One of my favorite mangas is One Piece.'")
+user_input = st.text_area("Please enter your message to PLaMo-100B:", 'Please translate the following English sentence into Japanese: "One of my favorite mangas is One Piece."')
 
-if st.button("get response"):
+if st.button("Get response"):
     # Create a placeholder for the output
     output_placeholder = st.empty()
 
@@ -67,7 +67,7 @@ if st.button("get response"):
     })
 
 # Display conversation history with toggle and message limit
-show_history = st.toggle("display conversation history", value=True)
+show_history = st.toggle("Display conversation history", value=True)
 
 if show_history and st.session_state.conversation:
     st.subheader("Conversation history")
@@ -118,5 +118,5 @@ st.markdown("""
 Please refer to the following articles and source code for details about this web application.
 
 - [PLaMo-100Bのβ版トライアルAPIを用いてデモ用アプリを作ってみた](https://zenn.dev/naoki0103/articles/plamo100b-demo)
-- [Source code (github)](https://github.com/C-Naoki/PLaMo-100B)
+- [Source code on GitHub](https://github.com/C-Naoki/PLaMo-100B)
 """)
