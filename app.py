@@ -21,15 +21,15 @@ if 'conversation' not in st.session_state:
     st.session_state.conversation = []
 
 # Streamlit app
-st.title("汎用チャットボット")
+st.title("PLaMo-100B Chat Demo")
 
 # System message input
-system_message = st.text_area("システムメッセージを入力してください：", "あなたは役立つアシスタントです。")
+system_message = st.text_area("Please enter a system message:", "You are a professional translator of Japanese and English.")
 
 # User input
-user_input = st.text_area("メッセージを入力してください：", "こんにちは、今日の天気はどうですか？")
+user_input = st.text_area("Please enter a message to PLaMo-100B:", "Please translate the following English sentence into Japanese: 'One of my favorite mangas is One Piece.'")
 
-if st.button("応答を取得"):
+if st.button("get response"):
     # Create a placeholder for the output
     output_placeholder = st.empty()
 
@@ -67,14 +67,14 @@ if st.button("応答を取得"):
     })
 
 # Display conversation history with toggle and message limit
-show_history = st.toggle("会話履歴を表示", value=True)
+show_history = st.toggle("display conversation history", value=True)
 
 if show_history and st.session_state.conversation:
-    st.subheader("会話履歴")
+    st.subheader("Conversation history")
 
     # Input for the number of recent messages to display
     num_messages = st.number_input(
-        "表示する最近のメッセージ数",
+        "number of recent messages to display",
         min_value=1,
         max_value=len(st.session_state.conversation),
         value=min(5, len(st.session_state.conversation))
@@ -104,19 +104,19 @@ if show_history and st.session_state.conversation:
     # CSV export button (now directly triggers download)
     csv_data = export_to_csv()
     st.download_button(
-        label="会話履歴をCSVでエクスポート",
+        label="export conversation history to CSV",
         data=csv_data,
         file_name="chat_history.csv",
         mime="text/csv"
     )
 
 elif show_history:
-    st.info("まだ会話履歴がありません。チャットを開始してください。")
+    st.info("No conversation history available. Let's send a message!")
 
 st.markdown("---")
 st.markdown("""
-このウェブアプリに関する詳細は、以下の記事及びソースコードをご覧ください。
+Please refer to the following articles and source code for details about this web application.
 
 - [PLaMo-100Bのβ版トライアルAPIを用いてデモ用アプリを作ってみた](https://zenn.dev/naoki0103/articles/plamo100b-demo)
-- [ソースコード](https://github.com/C-Naoki/PLaMo-100B)
+- [Source code (github)](https://github.com/C-Naoki/PLaMo-100B)
 """)
